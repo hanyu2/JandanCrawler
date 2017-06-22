@@ -4,7 +4,7 @@ from Queue import Queue
 import threading
 import urllib
 import urllib2
-
+import settings
 
 
 
@@ -77,11 +77,11 @@ class thread_parser(threading.Thread):
         self.threadID = threadID
         self.queue = queue
         self.lock = lock
-        MONGO_HOST = "ds161001.mlab.com"
-        MONGO_PORT = 61001
-        MONGO_DB = "blog"
-        MONGO_USER = "hanyu2"
-        MONGO_PASS = "yuhan0YH*"
+        MONGO_HOST = settings.setting['MONGO_HOST']
+        MONGO_PORT = settings.setting['MONGO_PORT']
+        MONGO_DB = settings.setting['MONGO_DB']
+        MONGO_USER = settings.setting['MONGO_USER']
+        MONGO_PASS = settings.setting['MONGO_PASS']
         connection = MongoClient(MONGO_HOST, MONGO_PORT)
         db = connection[MONGO_DB]
         db.authenticate(MONGO_USER, MONGO_PASS)

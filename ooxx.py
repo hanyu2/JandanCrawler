@@ -2,14 +2,15 @@ from bs4 import BeautifulSoup
 import urllib
 import urllib2
 from pymongo import MongoClient
+import settings
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
 
-MONGO_HOST = "ds161001.mlab.com"
-MONGO_PORT = 61001
-MONGO_DB = "blog"
-MONGO_USER = "hanyu2"
-MONGO_PASS = "yuhan0YH*"
+MONGO_HOST = settings.setting['MONGO_HOST']
+MONGO_PORT = settings.setting['MONGO_PORT']
+MONGO_DB = settings.setting['MONGO_DB']
+MONGO_USER = settings.setting['MONGO_USER']
+MONGO_PASS = settings.setting['MONGO_PASS']
 connection = MongoClient(MONGO_HOST, MONGO_PORT)
 db = connection[MONGO_DB]
 db.authenticate(MONGO_USER, MONGO_PASS)
